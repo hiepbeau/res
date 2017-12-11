@@ -190,10 +190,10 @@ class UsersController extends JoshController
             $user->bio = $request->get('bio');
             $user->gender = $request->get('gender');
             $user->country = $request->get('country');
-            $user->state = $request->get('state');
+           
             $user->city = $request->get('city');
             $user->address = $request->get('address');
-            $user->postal = $request->get('postal');
+           
 
             if ($password = $request->has('password')) {
                 $user->password = Hash::make($request->password);

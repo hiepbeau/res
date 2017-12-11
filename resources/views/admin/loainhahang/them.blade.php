@@ -39,7 +39,7 @@
                         </div>
                     @endif
                     <form class="form-horizontal" role="form" method="post" 
-                       action="admin.loainhahang.them" enctype="multipart/form-data" >
+                       action="admin/loainhahang/them" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 						

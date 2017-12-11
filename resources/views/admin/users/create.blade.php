@@ -187,14 +187,6 @@
                                             <span class="help-block">{{ $errors->first('country', ':message') }}</span>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="state" class="col-sm-2 control-label">State</label>
-                                            <div class="col-sm-10">
-                                                <input id="state" name="state" type="text" class="form-control"
-                                                       value="{!! old('state') !!}"/>
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('state', ':message') }}</span>
-                                        </div>
 
                                         <div class="form-group">
                                             <label for="city" class="col-sm-2 control-label">City</label>
@@ -214,14 +206,7 @@
                                             <span class="help-block">{{ $errors->first('address', ':message') }}</span>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="postal" class="col-sm-2 control-label">Postal/zip</label>
-                                            <div class="col-sm-10">
-                                                <input id="postal" name="postal" type="text" class="form-control"
-                                                       value="{!! old('postal') !!}"/>
-                                            </div>
-                                            <span class="help-block">{{ $errors->first('postal', ':message') }}</span>
-                                        </div>
+                                       
                                     </div>
                                     <div class="tab-pane" id="tab4" disabled="disabled">
                                         <p class="text-danger"><strong>Be careful with group selection, if you give admin access.. they can access admin section</strong></p>

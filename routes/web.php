@@ -14,8 +14,6 @@
 /**
  * Model binding into route
  */
-Route::model('blogcategory', 'App\BlogCategory');
-Route::model('blog', 'App\Blog');
 Route::model('file', 'App\File');
 Route::model('task', 'App\Task');
 Route::model('users', 'App\User');
@@ -90,16 +88,51 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
 
     });
 
-    Route::group(array('prefix'=>'loainhahang'), function(){
+    Route::group(array('prefix' => 'typerestaurants'), function () {
+        
+        Route::get('/', array('as' => 'typerestaurants', 'uses' => 'TypeRestaurantsController@index'));
+        Route::get('create', 'TypeRestaurantsController@create');
+        Route::post('create1',['as' => 'typerestaurants.create1', 'uses' =>'TypeRestaurantsController@store']);
 
-        Route::get('/','LoainhahangController@getdanhsach');
-        Route::get('create','LoainhahangController@getthem' );
-        Route::post('them','LoainhahangController@postthem');
-        Route::get('sua','LoainhahangController@getsua');
-        Route::post('sua','LoainhahangController@postsua');
-        Route::get('xoa','LoainhahangController@getxoa');
-        Route::post('xoa','LoainhahangController@postxoa');
+        Route::get('edit/{id}', array('as' => 'typerestaurants.edit', 'uses' => 'TypeRestaurantsController@edit'));
+        Route::post('create2/{id}', ['as' => 'typerestaurants.create2', 'uses' =>'TypeRestaurantsController@update']);
+
+        Route::get('{typerestaurants}/delete_modal',['as' => 'typerestaurants.delete_modal', 'uses' =>'TypeRestaurantsController@delete_modal']);
+
+        Route::get('{typerestaurants}/delete', array('as' => 'typerestaurants.delete', 'uses' => 'TypeRestaurantsController@delete'));
+
     });
+
+    Route::group(array('prefix' => 'order'), function () {
+        
+        Route::get('/', array('as' => 'order', 'uses' => 'OrderController@index'));
+        Route::get('create', 'OrderController@create');
+        Route::post('create1',['as' => 'orderrestaurants.create1', 'uses' =>'OrderController@store']);
+
+        Route::get('edit/{id}', array('as' => 'orderrestaurants.edit', 'uses' => 'OrderController@edit'));
+        Route::post('create2/{id}', ['as' => 'orderrestaurants.create2', 'uses' =>'OrderController@update']);
+
+        Route::get('{orderrestaurants}/delete_modal',['as' => 'orderrestaurants.delete_modal', 'uses' =>'OrderController@delete_modal']);
+
+        Route::get('{orderrestaurants}/delete', array('as' => 'orderrestaurants.delete', 'uses' => 'OrderController@delete'));
+
+    });
+
+    
+
+
+    // Route::group(array('prefix'=>'loainhahang'), function(){
+
+    //     Route::get('/','LoainhahangController@getdanhsach');
+    //     Route::get('create','LoainhahangController@getthem' );
+    //     Route::post('them','LoainhahangController@postthem');
+
+    //     Route::get('sua/{idlnh}','LoainhahangController@getsua');
+    //     Route::post('sua/{idlnh}','LoainhahangController@postsua');
+        
+    //     Route::get('xoa/{idlnh}','LoainhahangController@getxoa');
+    //     //Route::post('xoa','LoainhahangController@postxoa');
+    // });
 	
 
 
@@ -386,17 +419,7 @@ Route::get('/', array('as' => 'home', function () {
     return View::make('index');
 }));
 
-Route::get('blog', array('as' => 'blog', 'uses' => 'FrontendBlogController@index'));
-Route::get('blog/{slug}/tag', 'FrontendBlogController@getBlogTag');
-Route::get('blogitem/{slug?}', 'FrontendBlogController@getBlog');
-Route::post('blogitem/{blog}/comment', 'FrontendBlogController@storeComment');
-
 Route::get('{name?}', 'JoshController@showFrontEndView');
-
-Route::get('test', function () 
-{
-    return view('admin.restaurants.edit');
-});
 
   
 # End of frontend views

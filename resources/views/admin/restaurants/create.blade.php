@@ -59,8 +59,8 @@
                        action="{{ route('admin.restaurants.create1') }}" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-						
-                       	<!--ID-->
+                        
+                        <!--ID-->
                         <!-- <div class="form-group {{ $errors->
                             first('name', 'has-error') }}">
                             
@@ -106,8 +106,8 @@
                                 {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
                             </div>
                         </div>
-						
-                      	<!--Image-->
+                        
+                        <!--Image-->
                         <div class="form-group {{ $errors->first('pic_file', 'has-error') }}">
                             <label for="pic" class="col-sm-2 control-label">Profile picture</label>
                                 <div class="col-sm-10">

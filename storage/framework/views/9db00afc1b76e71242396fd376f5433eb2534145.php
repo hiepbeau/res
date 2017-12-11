@@ -126,14 +126,14 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li <?php echo (Request::is('admin/loainhahang') ? 'class="active" id="active"' : ''); ?>>
-                <a href="<?php echo e(URL::to('admin/loainhahang')); ?>">
+            <li <?php echo (Request::is('admin/typerestaurants') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('admin/typerestaurants')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Type restaurants
                 </a>
             </li>
-            <li <?php echo (Request::is('admin/loainhahang/create') ? 'class="active" id="active"' : ''); ?>>
-                <a href="<?php echo e(URL::to('admin/loainhahang/create')); ?>">
+            <li <?php echo (Request::is('admin/typerestaurants/create') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('admin/typerestaurants/create')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Add new type 
 
@@ -153,14 +153,14 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li <?php echo (Request::is('admin/loainhahang') ? 'class="active" id="active"' : ''); ?>>
-                <a href="<?php echo e(URL::to('user/loainhahang')); ?>">
+            <li <?php echo (Request::is('admin/typerestaurants') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('user/typerestaurants')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Type restaurants
                 </a>
             </li>
-            <li <?php echo (Request::is('admin/loainhahang/create') ? 'class="active" id="active"' : ''); ?>>
-                <a href="<?php echo e(URL::to('user/loainhahang/create')); ?>">
+            <li <?php echo (Request::is('admin/typerestaurants/create') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('user/typerestaurants/create')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Add new type restaurant
                 </a>
@@ -179,13 +179,13 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li <?php echo (Request::is('admin/donhang') ? 'class="active" id="active"' : ''); ?>>
+            <li <?php echo (Request::is('admin/order') ? 'class="active" id="active"' : ''); ?>>
                 <a href="<?php echo e(URL::to('admin/order')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Order
                 </a>
             </li>
-            <li <?php echo (Request::is('admin/donhang/create') ? 'class="active" id="active"' : ''); ?>>
+            <li <?php echo (Request::is('admin/order/create') ? 'class="active" id="active"' : ''); ?>>
                 <a href="<?php echo e(URL::to('admin/order/create')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Add new order
@@ -205,16 +205,68 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li <?php echo (Request::is('admin/donhang') ? 'class="active" id="active"' : ''); ?>>
+            <li <?php echo (Request::is('admin/order') ? 'class="active" id="active"' : ''); ?>>
                 <a href="<?php echo e(URL::to('user/order')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Order
                 </a>
             </li>
-            <li <?php echo (Request::is('admin/donhang/create') ? 'class="active" id="active"' : ''); ?>>
+            <li <?php echo (Request::is('admin/order/create') ? 'class="active" id="active"' : ''); ?>>
                 <a href="<?php echo e(URL::to('user/order/create')); ?>">
                     <i class="fa fa-angle-double-right"></i>
                     Add new order
+                </a>
+            </li>
+        </ul>
+    </li>
+    <?php endif; ?> 
+
+
+        <?php if(Sentinel::inRole('admin')): ?>
+    <li <?php echo (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active";' : 'class="hiden";'); ?>>
+        <a href="#">
+            <i class="fa fa-mercury" aria-hidden="true"></i>
+            &nbsp;&nbsp;
+            <span class="title">Comment</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li <?php echo (Request::is('admin/order') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('admin/order')); ?>">
+                    <i class="fa fa-angle-double-right"></i>
+                    Comment
+                </a>
+            </li>
+            <li <?php echo (Request::is('admin/order/create') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('admin/order/create')); ?>">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add new comment
+                </a>
+            </li>
+        </ul>
+    </li>
+    <?php endif; ?>
+           
+
+    <?php if(Sentinel::inRole('user')): ?>
+    <li <?php echo (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active";' : 'class="hiden";'); ?>>
+        <a href="#">
+            <i class="fa fa-mercury" aria-hidden="true"></i>
+            &nbsp;&nbsp;
+            <span class="title">Comment</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li <?php echo (Request::is('admin/order') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('user/order')); ?>">
+                    <i class="fa fa-angle-double-right"></i>
+                    Comment
+                </a>
+            </li>
+            <li <?php echo (Request::is('admin/order/create') ? 'class="active" id="active"' : ''); ?>>
+                <a href="<?php echo e(URL::to('user/order/create')); ?>">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add new commnet
                 </a>
             </li>
         </ul>

@@ -32,22 +32,25 @@ class LoainhahangController extends JoshController
 		echo $request->ten;
 	}
 
-	public function getsua($id)
+	public function getsua($idlnh)
+	{
+		  $loainhahang = DB:: table('loainhahang')->where('idlnh',$idlnh)->get();
+		  
+		return view('admin.loainhahang.sua',['loainhahang'=>$loainhahang]);
+
+	}
+
+	public function postsua(Request $request,$idlnh)
 	{
 
 	}
 
-	public function postsua(Request $request,$id)
+	public function getxoa($idlnh)
 	{
 
 	}
 
-	public function getxoa($id)
-	{
-
-	}
-
-	public function postxoa($id)
+	public function postxoa($idlnh)
 	{
 
 	}

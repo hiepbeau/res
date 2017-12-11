@@ -39,13 +39,13 @@
 									<td>{{ $value-> tenlnh }}</td>
 									 @if(Sentinel::inRole('admin'))
 									<td>
-										 <a href="{{url('admin/loainhahang/sua/'.$value->id)}}" class="btn btn-info">
+										 <a href="{{url('admin/loainhahang/sua/'.$value->idlnh)}}" class="btn btn-info">
 
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
 										&nbsp;&nbsp;&nbsp;
-										<a href="admin.loainhahang.xoa/{{$value->id}}" data-toggle="modal" data-target="#delete_modal" 
+										<a href="admin.loainhahang.xoa/{{$value->idlnh}}" data-toggle="modal" data-target="#delete_modal" 
 										class="btn btn-danger">
 											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
 										</a>

@@ -48,7 +48,7 @@ Users List
                             <th>Last Name</th>
                             <th>User E-mail</th>
                             <th>Status</th>
-                            <th>Created At</th>
+                           
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -80,7 +80,7 @@ Users List
                 { data: 'last_name', name: 'last_name' },
                 { data: 'email', name: 'email' },
                 { data: 'status', name: 'status'},
-                { data: 'created_at', name:'created_at'},
+                
                 { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ]
         });

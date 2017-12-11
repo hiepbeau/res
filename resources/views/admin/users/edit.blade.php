@@ -190,14 +190,7 @@
                                                     {!! $errors->first('country', '<span class="help-block">:message</span>') !!}
                                                 </div>
 
-                                                <div class="form-group {{ $errors->first('state', 'has-error') }}">
-                                                    <label for="state" class="col-sm-2 control-label">State </label>
-                                                    <div class="col-sm-10">
-                                                        <input id="state" name="state" type="text" class="form-control"
-                                                               value="{!! old('state', $user->state) !!}"/>
-                                                    </div>
-                                                    {!! $errors->first('state', '<span class="help-block">:message</span>') !!}
-                                                </div>
+                                                
 
                                                 <div class="form-group {{ $errors->first('city', 'has-error') }}">
                                                     <label for="city" class="col-sm-2 control-label">City </label>
@@ -217,14 +210,7 @@
                                                     {!! $errors->first('address', '<span class="help-block">:message</span>') !!}
                                                 </div>
 
-                                                <div class="form-group {{ $errors->first('postal', 'has-error') }}">
-                                                    <label for="postal" class="col-sm-2 control-label">Postal/zip</label>
-                                                    <div class="col-sm-10">
-                                                        <input id="postal" name="postal" type="text" class="form-control"
-                                                               value="{!! old('postal', $user->postal) !!}"/>
-                                                    </div>
-                                                    {!! $errors->first('postal', '<span class="help-block">:message</span>') !!}
-                                                </div>
+                                               
                                             </div>
                                             <div class="tab-pane" id="tab4" disabled="disabled">
                                                 <p class="text-danger"><strong>Be careful with group selection, if you give admin access.. they can access admin section</strong></p>

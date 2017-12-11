@@ -57,8 +57,8 @@
                        action="<?php echo e(route('admin.restaurants.create1')); ?>" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
-						
-                       	<!--ID-->
+                        
+                        <!--ID-->
                         <!-- <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             
@@ -107,8 +107,8 @@
 
                             </div>
                         </div>
-						
-                      	<!--Image-->
+                        
+                        <!--Image-->
                         <div class="form-group <?php echo e($errors->first('pic_file', 'has-error')); ?>">
                             <label for="pic" class="col-sm-2 control-label">Profile picture</label>
                                 <div class="col-sm-10">

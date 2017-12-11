@@ -23,7 +23,7 @@ Users List
 
 <?php $__env->startSection('content'); ?>
 <section class="content-header">
-    <h1>Users</h1>
+    <h1>Admin</h1>
     <ol class="breadcrumb">
         <li>
             <a href="<?php echo e(route('admin.dashboard')); ?>">
