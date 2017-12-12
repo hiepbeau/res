@@ -9,6 +9,6 @@ class Nhahang extends Model
      protected $table = 'nhahang';
 
      public function loainhahang(){
-       return $this->belongsTo('App\Loainhahang','idloainhahang','idlnh');
+       return $this->belongsTo('App\Loainhahang','idloainhahang','id');
      }
 }

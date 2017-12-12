@@ -4,12 +4,12 @@
 
           <div class="modal-body">
             <p>Delete this restaurant ?</p>
-            <p>ID: {{$data -> idlnh}}</p>
+            <p>ID: {{$data -> id}}</p>
             <p>Tên loại nhà hàng: {{$data -> tenlnh}}</p>
 
           </div>
 
           <div class="modal-footer">
             <a class="btn btn-danger" data-dismiss="modal">No</a>
-            <a class="btn btn-warning" id="submit" href="{{ route('admin.typerestaurants.delete', $data->idlnh) }}">Yes</a>
+            <a class="btn btn-warning" id="submit" href="{{ route('admin.typerestaurants.delete', $data->id) }}">Yes</a>
           </div>

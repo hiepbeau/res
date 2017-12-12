@@ -15,9 +15,9 @@ class RestaurantsController extends JoshController
 {
     public function index()
     {
-     $data = DB::table('nhahang')->join('loainhahang','nhahang.idloainhahang','=','loainhahang.idlnh')->get();
-
-     $loainhahang = DB::table('loainhahang')->get();
+     //$data = DB::table('nhahang')->join('loainhahang','nhahang.idloainhahang','=','loainhahang.id')->get();
+    $data = Nhahang::all();
+    $loainhahang = DB::table('loainhahang')->get();
      if( count($data) > 0 ){
         return view('admin.restaurants.index')->with(['data' => $data]);
     } else {
@@ -96,6 +96,8 @@ public function edit($id){
 
     $nhahang = Nhahang::find($id);
     $loainhahang = Loainhahang::all();
+  
+    //echo $loainhahang;
     return view('admin.restaurants.edit',['nhahang'=>$nhahang,'loainhahang'=>$loainhahang]);
 
 }
@@ -111,7 +113,7 @@ public function delete($id = null)
 {
     DB::table('nhahang')->where('id', $id)->delete();
 
-    $data = DB::table('nhahang')->join('loainhahang','nhahang.idloainhahang','=','loainhahang.idlnh')->get();
+    $data = DB::table('nhahang')->join('loainhahang','nhahang.idloainhahang','=','loainhahang.id')->get();
     $loainhahang = DB::table('loainhahang')->get();
     if( count($data) > 0 ){
         return view('admin.restaurants.index')->with(['data' => $data]);

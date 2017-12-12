@@ -83,10 +83,10 @@
                                 <select class="form-control" name="loainhahang">
                                     @foreach($loainhahang as $i)
                                         <option
-                                        @if($nhahang->loainhahang->idlnh == $i->idlnh)
+                                        @if($nhahang->idloainhahang==$i->id)
                                         {{"selected"}}
                                         @endif
-                                         value="{{$i->idlnh}}">{{$i->tenlnh}}</option>
+                                         value="{{$i->id}}">{{$i->tenlnh}}</option>
                                         }
                                         }
                                     @endforeach

@@ -26,7 +26,7 @@
         </li>
         <li>Restaurants</li>
         <li class="active">
-            Create new type restaurant
+            Create new order
         </li>
     </ol>
 </section>
@@ -38,7 +38,7 @@
             <div class="panel panel-primary ">
                 <div class="panel-heading">
                     <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Create new type restaurant
+                        Create new order
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -54,7 +54,7 @@
                         </div>
                     <?php endif; ?>
                     <form class="form-horizontal" role="form" method="post" 
-                       action="<?php echo e(route('admin.typerestaurants.create1')); ?>" enctype="multipart/form-data" >
+                       action="<?php echo e(route('admin.order.create1')); ?>" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
                         
@@ -64,10 +64,25 @@
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
-                                Tên  loại nhà hàng:
+                                Ngày, giờ:
                             </label>
                             <div class="col-sm-5">
-                                <input type="text" id="tenlnh" name="tenlnh" class="form-control" required>
+                                <input type="text" id="ngay" name="ngay" class="form-control" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+
+                            </div>
+                        </div>
+
+                        <!--Name-->
+                        <div class="form-group <?php echo e($errors->
+                            first('name', 'has-error')); ?>">
+                            <label for="title" class="col-sm-2 control-label">
+                                Ngày, giờ:
+                            </label>
+                            <div class="col-sm-5">
+                                <input type="text" id="ngay" name="ngay" class="form-control" required>
                             </div>
                             <div class="col-sm-4">
                                 <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
@@ -75,7 +90,7 @@
                             </div>
                         </div>
                         
-                        <!--Name-->
+                        
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">

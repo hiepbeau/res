@@ -68,7 +68,7 @@ Users List
 								<tr id="data" class="{{$key}}">
 									
 									<td>{{ $value-> id }}</td>
-									<td>{{ $value-> tenlnh }}</td>
+									<td>{{ $value->loainhahang->tenlnh }}</td>
 									<td>{{ $value-> ten }}</td>
 									<td>
 									@if($value->image)

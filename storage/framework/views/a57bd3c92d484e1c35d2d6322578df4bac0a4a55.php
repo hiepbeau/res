@@ -65,7 +65,7 @@ Users List
 								<tr id="data" class="<?php echo e($key); ?>">
 									
 									<td><?php echo e($value-> id); ?></td>
-									<td><?php echo e($value-> tenlnh); ?></td>
+									<td><?php echo e($value->loainhahang->tenlnh); ?></td>
 									<td><?php echo e($value-> ten); ?></td>
 									<td>
 									<?php if($value->image): ?>

@@ -61,24 +61,20 @@ Users List
 							@foreach($data as $key => $value)
 								<tr id="data" class="{{$key}}">
 									
-									<td>{{ $value-> idlnh }}</td>
+									<td>{{ $value-> id }}</td>
 									<td>{{ $value-> tenlnh }}</td>
 									<td>{{ $value-> ghichu }}</td>
 									 @if(Sentinel::inRole('admin'))
 									<td>
-										<!--  <a href="{{url('admin/typerestaurants/edit/'.$value->idlnh)}}" class="btn btn-info">
+										 <a href="{{url('admin/typerestaurants/edit/'.$value->id)}}" class="btn btn-info">
 
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
-										&nbsp;&nbsp;&nbsp; -->
+										&nbsp;&nbsp;&nbsp;
 
-										<a href="{{route('admin.typerestaurants.delete_modal',$value->idlnh)}}" data-toggle="modal" data-target="#delete_modal" 
-										class="btn btn-danger">
-											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
-										</a>
 										
-										<a href="{{route('admin.typerestaurants.delete_modal',$value->idlnh)}}" data-toggle="modal" data-target="#delete_modal" 
+										<a href="{{route('admin.typerestaurants.delete_modal',$value->id)}}" data-toggle="modal" data-target="#delete_modal" 
 										class="btn btn-danger">
 											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
 										</a>

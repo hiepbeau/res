@@ -81,11 +81,11 @@
                                 <select class="form-control" name="loainhahang">
                                     <?php $__currentLoopData = $loainhahang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                         <option
-                                        <?php if($nhahang->loainhahang->idlnh == $i->idlnh): ?>
+                                        <?php if($nhahang->idloainhahang==$i->id): ?>
                                         <?php echo e("selected"); ?>
 
                                         <?php endif; ?>
-                                         value="<?php echo e($i->idlnh); ?>"><?php echo e($i->tenlnh); ?></option>
+                                         value="<?php echo e($i->id); ?>"><?php echo e($i->tenlnh); ?></option>
                                         }
                                         }
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

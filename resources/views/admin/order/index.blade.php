@@ -34,8 +34,8 @@ Users List
                 Dashboard
             </a>
         </li>
-        <li><a href="#"> Type Restaurants</a></li>
-        <li class="active">Type Restaurants List</li>
+        <li><a href="#">Order</a></li>
+        <li class="active">Order List</li>
     </ol>
 </section>
 
@@ -43,14 +43,18 @@ Users List
 	<div id="duongbao">
 			<div class="alert alert-info"><h1>Restaurants Manager</h1></div>
 			<div class="panel panel-primary">
-				<div class="panel-heading">Type Restaurants list</div>
+				<div class="panel-heading">Order list</div>
 				<div class="panel-body">
 					<table id="danhsach" class="table table-bordered table-strip table-hover">
 						<thead>
 							<tr class="danger" id="tableHead">
 								
 								<td width="10">ID</td>
-								<td >Tên</td>
+								<td >Tên nhà hàng</td>
+								<td >Họ khách hàng</td>
+								<td >Tên khách hàng</td>
+								<td >Ngày</td>
+								<td >số bàn</td>
 								<td>Ghi chú</td>
 								@if(Sentinel::inRole('admin'))
 								<td>Option</td>
@@ -60,25 +64,23 @@ Users List
 						<tbody>
 							@foreach($data as $key => $value)
 								<tr id="data" class="{{$key}}">
-									
-									<td>{{ $value-> idlnh }}</td>
-									<td>{{ $value-> tenlnh }}</td>
+									<td>{{ $value-> id }}</td>
+									<td>{{ $value->nhahang->ten }}</td>
+									<td>{{ $value->user->first_name }}</td>
+									<td>{{ $value->user->last_name }}</td>
+									<td>{{ $value-> ngay }}</td>
+									<td>{{ $value-> soban }}</td>
 									<td>{{ $value-> ghichu }}</td>
 									 @if(Sentinel::inRole('admin'))
 									<td>
-										<!--  <a href="{{url('admin/typerestaurants/edit/'.$value->idlnh)}}" class="btn btn-info">
+										 <a href="{{url('admin/order/edit/'.$value->idlnh)}}" class="btn btn-info">
 
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
-										&nbsp;&nbsp;&nbsp; -->
-
-										<a href="{{route('admin.typerestaurants.delete_modal',$value->idlnh)}}" data-toggle="modal" data-target="#delete_modal" 
-										class="btn btn-danger">
-											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
-										</a>
+										&nbsp;&nbsp;&nbsp;
 										
-										<a href="{{route('admin.typerestaurants.delete_modal',$value->idlnh)}}" data-toggle="modal" data-target="#delete_modal" 
+										<a href="{{route('admin.order.delete_modal',$value->idlnh)}}" data-toggle="modal" data-target="#delete_modal" 
 										class="btn btn-danger">
 											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
 										</a>

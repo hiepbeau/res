@@ -16,7 +16,8 @@ class OrderController extends JoshController
     public function index()
     {
 
-     $data = DB::table('donhang')->get();
+     //$data = DB::table('donhang')->get();
+    $data = Donhang::all();
      if( count($data) > 0 ){
         return view('admin.order.index')->with(['data' => $data]);
     } else {
@@ -47,18 +48,18 @@ public function store(){
 public function update(Request $request,$idlnh)
 {
 
-    // $donhang = donhang::find($idlnh);
-    // echo $donhang;
+    $donhang = donhang::find($idlnh);
+    echo $donhang;
 
 
-    // $data = array( 
-    //     'tenlnh' => $_POST["tenlnh"],
-    //     'ghichu' => $_POST["ghichu"]
-    // );
+    $data = array( 
+        'tenlnh' => $_POST["tenlnh"],
+        'ghichu' => $_POST["ghichu"]
+    );
 
-    // DB::table('donhang')->where('idlnh', $idlnh)->update($data);
+    DB::table('donhang')->where('idlnh', $idlnh)->update($data);
 
-    // return Redirect::route('admin.order')->with('success');
+    return Redirect::route('admin.order')->with('success');
 
 
 

@@ -84,7 +84,7 @@
                             <div class="col-sm-5">
                                 <select class="form-control" name="loainhahang">
                                     @foreach($lnh as $i)
-                                        <option value="{{$i->idlnh}}">{{$i->tenlnh}}</option>
+                                        <option value="{{$i->id}}">{{$i->tenlnh}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -107,14 +107,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         
         Route::get('/', array('as' => 'order', 'uses' => 'OrderController@index'));
         Route::get('create', 'OrderController@create');
-        Route::post('create1',['as' => 'orderrestaurants.create1', 'uses' =>'OrderController@store']);
+        Route::post('create1',['as' => 'order.create1', 'uses' =>'OrderController@store']);
 
-        Route::get('edit/{id}', array('as' => 'orderrestaurants.edit', 'uses' => 'OrderController@edit'));
-        Route::post('create2/{id}', ['as' => 'orderrestaurants.create2', 'uses' =>'OrderController@update']);
+        Route::get('edit/{id}', array('as' => 'order.edit', 'uses' => 'OrderController@edit'));
+        Route::post('create2/{id}', ['as' => 'order.create2', 'uses' =>'OrderController@update']);
 
-        Route::get('{orderrestaurants}/delete_modal',['as' => 'orderrestaurants.delete_modal', 'uses' =>'OrderController@delete_modal']);
+        Route::get('{order}/delete_modal',['as' => 'order.delete_modal', 'uses' =>'OrderController@delete_modal']);
 
-        Route::get('{orderrestaurants}/delete', array('as' => 'orderrestaurants.delete', 'uses' => 'OrderController@delete'));
+        Route::get('{order}/delete', array('as' => 'order.delete', 'uses' => 'OrderController@delete'));
 
     });
 

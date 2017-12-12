@@ -70,7 +70,7 @@
                         </div>
                     @endif
                     <form class="form-horizontal" role="form" method="post" 
-                       action="{{url('admin/typerestaurants/create2/'.$loainhahang->idlnh)}}" enctype="multipart/form-data" >
+                       action="{{url('admin/typerestaurants/create2/'.$loainhahang->id)}}" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 

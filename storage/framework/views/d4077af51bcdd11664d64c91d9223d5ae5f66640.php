@@ -58,18 +58,20 @@ Users List
 							<?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 								<tr id="data" class="<?php echo e($key); ?>">
 									
-									<td><?php echo e($value-> idlnh); ?></td>
+									<td><?php echo e($value-> id); ?></td>
 									<td><?php echo e($value-> tenlnh); ?></td>
 									<td><?php echo e($value-> ghichu); ?></td>
 									 <?php if(Sentinel::inRole('admin')): ?>
 									<td>
-										 <a href="<?php echo e(url('admin/typerestaurants/edit/'.$value->idlnh)); ?>" class="btn btn-info">
+										 <a href="<?php echo e(url('admin/typerestaurants/edit/'.$value->id)); ?>" class="btn btn-info">
 
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
 										&nbsp;&nbsp;&nbsp;
-										<a href="<?php echo e(route('admin.typerestaurants.delete_modal',$value->idlnh)); ?>" data-toggle="modal" data-target="#delete_modal" 
+
+										
+										<a href="<?php echo e(route('admin.typerestaurants.delete_modal',$value->id)); ?>" data-toggle="modal" data-target="#delete_modal" 
 										class="btn btn-danger">
 											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
 										</a>
