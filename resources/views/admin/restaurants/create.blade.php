@@ -59,22 +59,7 @@
                        action="{{ route('admin.restaurants.create1') }}" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        
-                        <!--ID-->
-                        <!-- <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            
-                            <label for="title" class="col-sm-2 control-label">
-                                ID: 
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="id" name="id" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
- -->
+                       
                          <!--Name-->
                         <div class="form-group {{ $errors->
                             first('name', 'has-error') }}">

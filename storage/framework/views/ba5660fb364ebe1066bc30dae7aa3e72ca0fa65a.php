@@ -44,11 +44,7 @@
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                             Change Password</a>
                     </li>
-                    <li>
-                        <a href="<?php echo e(URL::to('admin/user_profile')); ?>" >
-                            <i class="livicon" data-name="gift" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                            Advanced User Profile</a>
-                    </li>
+                   
 
                 </ul>
                 <div  class="tab-content mar-top">
@@ -128,13 +124,7 @@
 
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><?php echo app('translator')->get('users/title.state'); ?></td>
-                                                            <td>
-                                                                <?php echo e($user->state); ?>
-
-                                                            </td>
-                                                        </tr>
+                                                      
                                                         <tr>
                                                             <td><?php echo app('translator')->get('users/title.city'); ?></td>
                                                             <td>
@@ -149,13 +139,7 @@
 
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><?php echo app('translator')->get('users/title.postal'); ?></td>
-                                                            <td>
-                                                                <?php echo e($user->postal); ?>
-
-                                                            </td>
-                                                        </tr>
+                                                        
                                                         <tr>
                                                             <td><?php echo app('translator')->get('users/title.status'); ?></td>
                                                             <td>
@@ -169,13 +153,7 @@
                                                                 <?php endif; ?>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><?php echo app('translator')->get('users/title.created_at'); ?></td>
-                                                            <td>
-                                                                <?php echo $user->created_at->diffForHumans(); ?>
-
-                                                            </td>
-                                                        </tr>
+                                                       
                                                     </table>
                                                 </div>
                                             </div>

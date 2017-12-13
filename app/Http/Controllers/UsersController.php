@@ -187,7 +187,7 @@ class UsersController extends JoshController
             $user->last_name = $request->get('last_name');
             $user->email = $request->get('email');
             $user->dob = $request->get('dob');
-            $user->bio = $request->get('bio');
+           
             $user->gender = $request->get('gender');
             $user->country = $request->get('country');
            

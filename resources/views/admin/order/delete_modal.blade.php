@@ -3,9 +3,10 @@
 </div>
 
           <div class="modal-body">
-            <p>Delete this restaurant ?</p>
-            <p>ID: {{$data -> idlnh}}</p>
-            <p>Tên loại nhà hàng: {{$data -> tenlnh}}</p>
+            <p>Delete this order ?</p>
+            <p>ID: {{$data -> id}}</p>
+            <p>Tên nhà hàng: {{$data ->nhahang->ten}}</p>
+            <p>Tên khách hàng: {{$data ->user->last_name}}</p>
 
           </div>
 

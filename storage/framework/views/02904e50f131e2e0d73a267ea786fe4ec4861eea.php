@@ -58,22 +58,6 @@
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
                         
-                        
-                        
-                        <!--Name-->
-                        <div class="form-group <?php echo e($errors->
-                            first('name', 'has-error')); ?>">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ngày, giờ:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ngay" name="ngay" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
-
-                            </div>
-                        </div>
 
                         <!--Name-->
                         <div class="form-group <?php echo e($errors->

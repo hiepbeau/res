@@ -57,7 +57,7 @@
                             <div id="rootwizard">
                                 <ul>
                                     <li><a href="#tab1" data-toggle="tab">User Profile</a></li>
-                                    <li><a href="#tab2" data-toggle="tab">Bio</a></li>
+                                   
                                     <li><a href="#tab3" data-toggle="tab">Address</a></li>
                                     <li><a href="#tab4" data-toggle="tab">User Group</a></li>
                                 </ul>
@@ -148,15 +148,6 @@
                                         </div>
 
 
-                                        <div class="form-group">
-                                            <label for="bio" class="col-sm-2 control-label">Bio <small>(brief intro) *</small></label>
-                                            <div class="col-sm-10">
-                        <textarea name="bio" id="bio" class="form-control resize_vertical"
-                                  rows="4">{!! old('bio') !!}</textarea>
-                                            </div>
-                                            {!! $errors->first('bio', '<span class="help-block">:message</span>') !!}
-                                        </div>
-                                    </div>
                                     <div class="tab-pane" id="tab3" disabled="disabled">
                                         <div class="form-group {{ $errors->first('gender', 'has-error') }}">
                                             <label for="email" class="col-sm-2 control-label">Gender *</label>

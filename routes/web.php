@@ -121,21 +121,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     
 
 
-    // Route::group(array('prefix'=>'loainhahang'), function(){
-
-    //     Route::get('/','LoainhahangController@getdanhsach');
-    //     Route::get('create','LoainhahangController@getthem' );
-    //     Route::post('them','LoainhahangController@postthem');
-
-    //     Route::get('sua/{idlnh}','LoainhahangController@getsua');
-    //     Route::post('sua/{idlnh}','LoainhahangController@postsua');
-        
-    //     Route::get('xoa/{idlnh}','LoainhahangController@getxoa');
-    //     //Route::post('xoa','LoainhahangController@postxoa');
-    // });
-	
-
-
     
     # User Managemen    
     Route::group(array('prefix' => 'users'), function () {
@@ -151,7 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     });
     Route::resource('users', 'UsersController');
 
-    Route::get('deleted_users',array('as' => 'deleted_users','before' => 'Sentinel', 'uses' => 'UsersController@getDeletedUsers'));
+    
 
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
@@ -164,31 +149,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::get('{group}/confirm-delete', array('as' => 'groups.confirm-delete', 'uses' => 'GroupsController@getModalDelete'));
         Route::get('{group}/restore', array('as' => 'groups.restore', 'uses' => 'GroupsController@getRestore'));
     });
-    /*routes for blog*/
-    Route::group(array('prefix' => 'blog'), function () {
-        Route::get('/', array('as' => 'blogs', 'uses' => 'BlogController@index'));
-        Route::get('create', array('as' => 'blog.create', 'uses' => 'BlogController@create'));
-        Route::post('create', 'BlogController@store');
-        Route::get('{blog}/edit', array('as' => 'blog.edit', 'uses' => 'BlogController@edit'));
-        Route::post('{blog}/edit', 'BlogController@update');
-        Route::get('{blog}/delete', array('as' => 'blog.delete', 'uses' => 'BlogController@destroy'));
-        Route::get('{blog}/confirm-delete', array('as' => 'blog.confirm-delete', 'uses' => 'BlogController@getModalDelete'));
-        Route::get('{blog}/restore', array('as' => 'blog.restore', 'uses' => 'BlogController@restore'));
-        Route::get('{blog}/show', array('as' => 'blog.show', 'uses' => 'BlogController@show'));
-        Route::post('{blog}/storecomment', 'BlogController@storeComment');
-    });
-
-    /*routes for blog category*/
-    Route::group(array('prefix' => 'blogcategory'), function () {
-        Route::get('/', array('as' => 'blogcategories', 'uses' => 'BlogCategoryController@index'));
-        Route::get('create', array('as' => 'blogcategory.create', 'uses' => 'BlogCategoryController@create'));
-        Route::post('create', 'BlogCategoryController@store');
-        Route::get('{blogcategory}/edit', array('as' => 'blogcategory.edit', 'uses' => 'BlogCategoryController@edit'));
-        Route::post('{blogcategory}/edit', 'BlogCategoryController@update');
-        Route::get('{blogcategory}/delete', array('as' => 'blogcategory.delete', 'uses' => 'BlogCategoryController@destroy'));
-        Route::get('{blogcategory}/confirm-delete', array('as' => 'blogcategory.confirm-delete', 'uses' => 'BlogCategoryController@getModalDelete'));
-        Route::get('{blogcategory}/restore', array('as' => 'blogcategory.restore', 'uses' => 'BlogCategoryController@getRestore'));
-    });
+   
 
     /*routes for file*/
     Route::group(array('prefix' => 'file'), function () {
@@ -304,8 +265,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'SentinelUser', 'as' => 'user.
     });
     Route::resource('users', 'UsersController');
 
-    Route::get('deleted_users',array('as' => 'deleted_users','before' => 'Sentinel', 'uses' => 'UsersController@getDeletedUsers'));
-
+   
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
         Route::get('/', array('as' => 'groups', 'uses' => 'GroupsController@index'));
@@ -317,31 +277,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'SentinelUser', 'as' => 'user.
         Route::get('{group}/confirm-delete', array('as' => 'groups.confirm-delete', 'uses' => 'GroupsController@getModalDelete'));
         Route::get('{group}/restore', array('as' => 'groups.restore', 'uses' => 'GroupsController@getRestore'));
     });
-    /*routes for blog*/
-    Route::group(array('prefix' => 'blog'), function () {
-        Route::get('/', array('as' => 'blogs', 'uses' => 'BlogController@index'));
-        Route::get('create', array('as' => 'blog.create', 'uses' => 'BlogController@create'));
-        Route::post('create', 'BlogController@store');
-        Route::get('{blog}/edit', array('as' => 'blog.edit', 'uses' => 'BlogController@edit'));
-        Route::post('{blog}/edit', 'BlogController@update');
-        Route::get('{blog}/delete', array('as' => 'blog.delete', 'uses' => 'BlogController@destroy'));
-        Route::get('{blog}/confirm-delete', array('as' => 'blog.confirm-delete', 'uses' => 'BlogController@getModalDelete'));
-        Route::get('{blog}/restore', array('as' => 'blog.restore', 'uses' => 'BlogController@restore'));
-        Route::get('{blog}/show', array('as' => 'blog.show', 'uses' => 'BlogController@show'));
-        Route::post('{blog}/storecomment', 'BlogController@storeComment');
-    });
-
-    /*routes for blog category*/
-    Route::group(array('prefix' => 'blogcategory'), function () {
-        Route::get('/', array('as' => 'blogcategories', 'uses' => 'BlogCategoryController@index'));
-        Route::get('create', array('as' => 'blogcategory.create', 'uses' => 'BlogCategoryController@create'));
-        Route::post('create', 'BlogCategoryController@store');
-        Route::get('{blogcategory}/edit', array('as' => 'blogcategory.edit', 'uses' => 'BlogCategoryController@edit'));
-        Route::post('{blogcategory}/edit', 'BlogCategoryController@update');
-        Route::get('{blogcategory}/delete', array('as' => 'blogcategory.delete', 'uses' => 'BlogCategoryController@destroy'));
-        Route::get('{blogcategory}/confirm-delete', array('as' => 'blogcategory.confirm-delete', 'uses' => 'BlogCategoryController@getModalDelete'));
-        Route::get('{blogcategory}/restore', array('as' => 'blogcategory.restore', 'uses' => 'BlogCategoryController@getRestore'));
-    });
+    
 
     /*routes for file*/
     Route::group(array('prefix' => 'file'), function () {

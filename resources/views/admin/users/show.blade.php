@@ -47,11 +47,7 @@
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                             Change Password</a>
                     </li>
-                    <li>
-                        <a href="{{ URL::to('admin/user_profile') }}" >
-                            <i class="livicon" data-name="gift" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                            Advanced User Profile</a>
-                    </li>
+                   
 
                 </ul>
                 <div  class="tab-content mar-top">
@@ -127,12 +123,7 @@
                                                                 {{ $user->country }}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>@lang('users/title.state')</td>
-                                                            <td>
-                                                                {{ $user->state }}
-                                                            </td>
-                                                        </tr>
+                                                      
                                                         <tr>
                                                             <td>@lang('users/title.city')</td>
                                                             <td>
@@ -145,12 +136,7 @@
                                                                 {{ $user->address }}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>@lang('users/title.postal')</td>
-                                                            <td>
-                                                                {{ $user->postal }}
-                                                            </td>
-                                                        </tr>
+                                                        
                                                         <tr>
                                                             <td>@lang('users/title.status')</td>
                                                             <td>
@@ -164,12 +150,7 @@
                                                                 @endif
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>@lang('users/title.created_at')</td>
-                                                            <td>
-                                                                {!! $user->created_at->diffForHumans() !!}
-                                                            </td>
-                                                        </tr>
+                                                       
                                                     </table>
                                                 </div>
                                             </div>

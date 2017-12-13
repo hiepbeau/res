@@ -10,6 +10,7 @@ use DB;
 use Request;
 use App\Nhahang;
 use App\Donhang;
+use App\User;
 
 class OrderController extends JoshController
 {
@@ -27,6 +28,8 @@ class OrderController extends JoshController
 
 public function create()
 {
+    $nhahang = Nhahang::all();
+    $user = User::all();
     return view('admin.order.create');
 }
 
@@ -34,7 +37,8 @@ public function store(){
 
     //$data = DB::table('donhang')->get();
     $data = array(
-        'tenlnh' => $_POST["tenlnh"],  
+        'ngay' => $_POST["ngay"],
+        'soban' => $_POST["soban"],
         'ghichu' => $_POST["ghichu"]
     );
 
@@ -53,11 +57,11 @@ public function update(Request $request,$idlnh)
 
 
     $data = array( 
-        'tenlnh' => $_POST["tenlnh"],
+        'ngay' => $_POST["ngay"],
         'ghichu' => $_POST["ghichu"]
     );
 
-    DB::table('donhang')->where('idlnh', $idlnh)->update($data);
+    DB::table('donhang')->where('id', $id)->update($data);
 
     return Redirect::route('admin.order')->with('success');
 
@@ -71,8 +75,8 @@ public function edit($id){
 
 
     $donhang = Donhang::find($id);
-    // echo $donhang;
-    //return view('admin.order.edit',['donhang'=>$donhang]);
+    //echo $donhang;
+    return view('admin.order.edit',['donhang'=>$donhang]);
 
 }
 

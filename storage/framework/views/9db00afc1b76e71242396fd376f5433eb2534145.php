@@ -33,12 +33,7 @@
                     View Profile
                 </a>
             </li>
-            <li <?php echo (Request::is('admin/deleted_users') ? 'class="active" id="active"' : ''); ?>>
-                <a href="<?php echo e(URL::to('admin/deleted_users')); ?>">
-                    <i class="fa fa-angle-double-right"></i>
-                    Deleted Users
-                </a>
-            </li>
+           
         </ul>
     </li>
     

@@ -47,8 +47,7 @@ Users List
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>User E-mail</th>
-                            <th>Status</th>
-                           
+                            <th>Status</th>    
                             <th>Actions</th>
                         </tr>
                     </thead>

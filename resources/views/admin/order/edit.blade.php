@@ -41,9 +41,9 @@
                 @lang('general.dashboard')
             </a>
         </li>
-        <li>Type Restaurants</li>
+        <li>Order</li>
         <li class="active">
-            Edit Type Restaurant
+            Edit Order
         </li>
     </ol>
 </section>
@@ -55,7 +55,7 @@
             <div class="panel panel-primary ">
                 <div class="panel-heading">
                     <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Create new type restaurant
+                        Edit order
                     </h4>
                 </div>
                 <div class="panel-body">
@@ -70,7 +70,7 @@
                         </div>
                     @endif
                     <form class="form-horizontal" role="form" method="post" 
-                       action="{{url('admin/typerestaurants/create2/'.$loainhahang->idlnh)}}" enctype="multipart/form-data" >
+                       action="{{url('admin/order/create2/'.$donhang->id)}}" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
@@ -80,17 +80,62 @@
                         <div class="form-group {{ $errors->
                             first('name', 'has-error') }}">
                             <label for="title" class="col-sm-2 control-label">
-                                Tên loại nhà hàng:
+                                Tên nhà hàng:
                             </label>
                             <div class="col-sm-5">
-                                <input type="text" id="tenlnh" name="tenlnh" class="form-control" 
-                                value="{{$loainhahang->tenlnh}}">
+                                <input type="text" id="ten" name="ten" class="form-control" 
+                                value="{{$donhang->nhahang->ten}}">
+                            </div>
+                            <div class="col-sm-4">
+                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                            </div>
+                        </div>
+
+                          <!--Name-->
+                        <div class="form-group {{ $errors->
+                            first('name', 'has-error') }}">
+                            <label for="title" class="col-sm-2 control-label">
+                                Họ khách  hàng:
+                            </label>
+                            <div class="col-sm-5">
+                                <input type="text" id="hokh" name="hokh" class="form-control" 
+                                value="{{$donhang->user->first_name}}">
                             </div>
                             <div class="col-sm-4">
                                 {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
                             </div>
                         </div>
             
+                         <!--Name-->
+                        <div class="form-group {{ $errors->
+                            first('name', 'has-error') }}">
+                            <label for="title" class="col-sm-2 control-label">
+                                Tên khách  hàng:
+                            </label>
+                            <div class="col-sm-5">
+                                <input type="text" id="tenkh" name="tenkh" class="form-control" 
+                                value="{{$donhang->user->last_name}}">
+                            </div>
+                            <div class="col-sm-4">
+                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                            </div>
+                        </div>
+                        
+                           <!--Name-->
+                        <div class="form-group {{ $errors->
+                            first('name', 'has-error') }}">
+                            <label for="title" class="col-sm-2 control-label">
+                                Ngày,giờ:
+                            </label>
+                            <div class="col-sm-5">
+                                <input type="text" id="ngay" name="ngay" class="form-control" 
+                                value="{{$donhang->ngay}}">
+                            </div>
+                            <div class="col-sm-4">
+                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                            </div>
+                        </div>
+
                        
 
                          <div class="form-group {{ $errors->
@@ -100,7 +145,7 @@
                             </label>
                             <div class="col-sm-5">
                                 <input type="text" id="ghichu" name="ghichu" class="form-control" 
-                                value="{{ $loainhahang->ghichu}}">
+                                value="{{ $donhang->ghichu}}">
                             </div>
                             <div class="col-sm-4">
                                 {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
@@ -112,7 +157,7 @@
                         <!--button-->
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="{{ route('admin.typerestaurants') }}">
+                                <a class="btn btn-danger" href="{{ route('admin.order') }}">
                                     @lang('button.cancel')
                                 </a>
                                 <button type="submit" class="btn btn-success">
