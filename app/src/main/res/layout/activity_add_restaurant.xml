@@ -1,109 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="hiepnguyen.nhcver2.AddRestaurantActivity">
+    android:layout_height="match_parent">
 
-    <TableLayout
-        android:id="@+id/details"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:shrinkColumns="1"
-        android:stretchColumns="1">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TableRow>
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <TextView android:text="Name:" />
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <android.support.design.widget.TextInputLayout>
+            <ListView
+                android:id="@+id/restaurants"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorAccent"
-                    android:hint="Name" />
-            </android.support.design.widget.TextInputLayout>
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView android:text="Address:" />
-
-            <android.support.design.widget.TextInputLayout>
-
-                <EditText
-                    android:id="@+id/addr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorAccent"
-                    android:hint="Address" />
-            </android.support.design.widget.TextInputLayout>
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView android:text="Type:" />
-
-            <RadioGroup android:id="@+id/types">
-
-                <RadioButton
-                    android:id="@+id/take_out"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Take-Out" />
-
-                <RadioButton
-                    android:id="@+id/sit_down"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sit-Down" />
-
-                <RadioButton
-                    android:id="@+id/delivery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delivery" />
-            </RadioGroup>
-        </TableRow>
-
-        <LinearLayout
-            android:background="#D6D7D7">
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:id="@+id/details"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_save_black_48dp"
-                android:text="Save"
-                android:textColor="#2f406b"
-                android:textSize="16sp" />
+                android:paddingTop="4dip"
+                android:shrinkColumns="1"
+                android:stretchColumns="1">
 
-            <Button
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_cancel_black_48dp"
-                android:text="Cancel"
-                android:textColor="#2f406b"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </TableLayout>
+                <TableRow>
 
-    <ListView
-        android:id="@+id/restaurants"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/details"
-        android:layout_alignParentTop="true" />
-</RelativeLayout>
+                    <TextView android:text="Name:" />
+
+                    <EditText android:id="@+id/name" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView android:text="Address:" />
+
+                    <EditText android:id="@+id/addr" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView android:text="Type:" />
+
+                    <RadioGroup android:id="@+id/types">
+
+                        <RadioButton
+                            android:id="@+id/take_out"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="Take-Out" />
+
+                        <RadioButton
+                            android:id="@+id/sit_down"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sit-Down" />
+
+                        <RadioButton
+                            android:id="@+id/delivery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery" />
+                    </RadioGroup>
+                </TableRow>
+
+
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_save_black_48dp"
+                    android:text="Save"
+                    android:textColor="#2f406b"
+                    android:textSize="16sp" />
+
+            </TableLayout>
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>
