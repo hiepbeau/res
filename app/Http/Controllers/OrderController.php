@@ -30,13 +30,14 @@ public function create()
 {
     $nhahang = Nhahang::all();
     $user = User::all();
-    return view('admin.order.create');
+    return view('admin.order.create')->with(['nhahang'=>$nhahang,'user'=>$user]);
 }
 
 public function store(){   
 
-    //$data = DB::table('donhang')->get();
     $data = array(
+        'idnhahang' => $_POST["idnhahang"],
+        'iduser' => $_POST["iduser"],
         'ngay' => $_POST["ngay"],
         'soban' => $_POST["soban"],
         'ghichu' => $_POST["ghichu"]
@@ -49,15 +50,18 @@ public function store(){
 
 }
 
-public function update(Request $request,$idlnh)
+public function update(Request $request,$id)
 {
 
-    $donhang = donhang::find($idlnh);
+    $donhang = donhang::find($id);
     echo $donhang;
 
 
     $data = array( 
+        'idnhahang' => $_POST["idnhahang"],
+        'iduser' => $_POST["iduser"],
         'ngay' => $_POST["ngay"],
+        'soban' => $_POST["soban"],
         'ghichu' => $_POST["ghichu"]
     );
 
@@ -75,8 +79,9 @@ public function edit($id){
 
 
     $donhang = Donhang::find($id);
-    //echo $donhang;
-    return view('admin.order.edit',['donhang'=>$donhang]);
+    $nhahang = Nhahang::all();
+    $user = User::all();
+    return view('admin.order.edit',['donhang'=>$donhang,'user' =>$user,'nhahang'=>$nhahang]);
 
 }
 

@@ -1,8 +1,3 @@
-<?php $__env->startSection('title'); ?>
-    <?php echo app('translator')->get('admin/groups/title.create'); ?>
-    @parent
-<?php $__env->stopSection(); ?>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="<?php echo e(asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" type="text/css" rel="stylesheet">
@@ -15,7 +10,7 @@
 <?php $__env->startSection('content'); ?>
 <section class="content-header">
     <h1>
-        <?php echo app('translator')->get('groups/title.create'); ?>
+        Order
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -45,68 +40,118 @@
                     <?php echo $errors->first('slug', '<span class="help-block">Another role with same slug exists, please choose another name</span> '); ?>
 
                     <?php if(count($errors) > 0): ?>
-                        <div class="alert alert-danger">
-                            <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                        </ul>
+                    </div>
                     <?php endif; ?>
                     <form class="form-horizontal" role="form" method="post" 
-                       action="<?php echo e(route('admin.order.create1')); ?>" enctype="multipart/form-data" >
-                        <!-- CSRF Token -->
-                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
-                        
+                    action="<?php echo e(route('admin.order.create1')); ?>" enctype="multipart/form-data" >
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+                    
 
-                        <!--Name-->
-                        <div class="form-group <?php echo e($errors->
-                            first('name', 'has-error')); ?>">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ngày, giờ:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ngay" name="ngay" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+                    <div class="form-group <?php echo e($errors->
+                        first('name', 'has-error')); ?>">
+                        <label for="title" class="col-sm-2 control-label">
+                            Tên nhà hàng:
+                        </label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="idnhahang">
+                                <?php $__currentLoopData = $nhahang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <option value="<?php echo e($i->id); ?>"><?php echo e($i->ten); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
 
-                            </div>
                         </div>
-                        
-                        
-                        <div class="form-group <?php echo e($errors->
-                            first('name', 'has-error')); ?>">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ghi chú:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ghichu" name="ghichu" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+                    </div>
 
-                            </div>
+                    <div class="form-group <?php echo e($errors->
+                        first('name', 'has-error')); ?>">
+                        <label for="title" class="col-sm-2 control-label">
+                            Khách hàng:
+                        </label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="iduser">
+                                <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <option value="<?php echo e($i->id); ?>"><?php echo e($i->id); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                            </select>
                         </div>
-                      
-                        
-                        <!--button-->
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="<?php echo e(route('admin.groups')); ?>">
-                                    <?php echo app('translator')->get('button.cancel'); ?>
-                                </a>
-                                <button type="submit" class="btn btn-success" id="submit">
-                                    <?php echo app('translator')->get('button.save'); ?>
-                                </button>
-                            </div>
+                        <div class="col-sm-4">
+                            <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="form-group <?php echo e($errors->
+                        first('name', 'has-error')); ?>">
+                        <label for="title" class="col-sm-2 control-label">
+                            Ngày, giờ:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="ngay" name="ngay" class="form-control" required  data-date-format="YYYY-MM-DD HH-MM-SS"
+                            placeholder="yyyy-mm-dd hh-mm-ss">
+                        </div>
+                        <div class="col-sm-4">
+                            <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group <?php echo e($errors->
+                        first('name', 'has-error')); ?>">
+                        <label for="title" class="col-sm-2 control-label">
+                            Số bàn:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="soban" name="soban" class="form-control" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group <?php echo e($errors->
+                        first('name', 'has-error')); ?>">
+                        <label for="title" class="col-sm-2 control-label">
+                            Ghi chú:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="ghichu" name="ghichu" class="form-control" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
+
+                        </div>
+                    </div>
+
+
+                    <!--button-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <a class="btn btn-danger" href="<?php echo e(route('admin.groups')); ?>">
+                                <?php echo app('translator')->get('button.cancel'); ?>
+                            </a>
+                            <button type="submit" class="btn btn-success" id="submit">
+                                <?php echo app('translator')->get('button.save'); ?>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- row-->
+</div>
+<!-- row-->
 </section>
 <?php $__env->stopSection(); ?>
 

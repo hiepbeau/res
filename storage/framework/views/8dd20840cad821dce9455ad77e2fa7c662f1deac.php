@@ -1,80 +1,65 @@
-<?php $__env->startSection('title'); ?>
+<!-- <?php $__env->startSection('title'); ?>
     <?php echo app('translator')->get('admin/groups/title.create'); ?>
     @parent
-<?php $__env->stopSection(); ?>
+    <?php $__env->stopSection(); ?> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="<?php echo e(asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" type="text/css" rel="stylesheet">
-<link href="<?php echo e(asset('assets/vendors/select2/css/select2-bootstrap.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(asset('assets/vendors/iCheck/css/all.css')); ?>"  rel="stylesheet" type="text/css" />
-<link href="<?php echo e(asset('assets/css/pages/wizard.css')); ?>" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="<?php echo e(asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" type="text/css" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2-bootstrap.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/vendors/iCheck/css/all.css')); ?>"  rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('assets/css/pages/wizard.css')); ?>" rel="stylesheet">
 
+    
+    <?php $__env->startSection('content'); ?>
+    <section class="content-header">
+        <h1>
+            <!-- <?php echo app('translator')->get('groups/title.create'); ?> -->
+            Restaurants
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo e(route('admin.dashboard')); ?>">
+                    <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
+                    <?php echo app('translator')->get('general.dashboard'); ?>
+                </a>
+            </li>
+            <li>Restaurants</li>
+            <li class="active">
+                Create new restaurant
+            </li>
+        </ol>
+    </section>
 
-<?php $__env->startSection('content'); ?>
-<section class="content-header">
-    <h1>
-        <?php echo app('translator')->get('groups/title.create'); ?>
-    </h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="<?php echo e(route('admin.dashboard')); ?>">
-                <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                <?php echo app('translator')->get('general.dashboard'); ?>
-            </a>
-        </li>
-        <li>Restaurants</li>
-        <li class="active">
-            Create new restaurant
-        </li>
-    </ol>
-</section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary ">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                            Create new restaurant
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo $errors->first('slug', '<span class="help-block">Another role with same slug exists, please choose another name</span> '); ?>
 
-<!-- Main content -->
-<section class="content">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-primary ">
-                <div class="panel-heading">
-                    <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Create new restaurant
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    <?php echo $errors->first('slug', '<span class="help-block">Another role with same slug exists, please choose another name</span> '); ?>
-
-                    <?php if(count($errors) > 0): ?>
+                        <?php if(count($errors) > 0): ?>
                         <div class="alert alert-danger">
                             <ul>
                                 <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
+                                <li><?php echo e($error); ?></li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </ul>
                         </div>
-                    <?php endif; ?>
-                    <form class="form-horizontal" role="form" method="post" 
-                       action="<?php echo e(route('admin.restaurants.create1')); ?>" enctype="multipart/form-data" >
+                        <?php endif; ?>
+                        <form class="form-horizontal" role="form" method="post" 
+                        action="<?php echo e(route('admin.restaurants.create1')); ?>" enctype="multipart/form-data" >
                         <!-- CSRF Token -->
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
-                        
-                        <!--ID-->
-                        <!-- <div class="form-group <?php echo e($errors->
-                            first('name', 'has-error')); ?>">
-                            
-                            <label for="title" class="col-sm-2 control-label">
-                                ID: 
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="id" name="id" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <?php echo $errors->first('name', '<span class="help-block">:message</span> '); ?>
 
-                            </div>
-                        </div>
- -->
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
@@ -83,7 +68,7 @@
                             <div class="col-sm-5">
                                 <select class="form-control" name="loainhahang">
                                     <?php $__currentLoopData = $lnh; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                        <option value="<?php echo e($i->idlnh); ?>"><?php echo e($i->tenlnh); ?></option>
+                                    <option value="<?php echo e($i->id); ?>"><?php echo e($i->tenlnh); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                 </select>
                             </div>
@@ -111,12 +96,12 @@
                         <!--Image-->
                         <div class="form-group <?php echo e($errors->first('pic_file', 'has-error')); ?>">
                             <label for="pic" class="col-sm-2 control-label">Profile picture</label>
-                                <div class="col-sm-10">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail" style="width: 500px; height: 500px;">
-                                            <img src="http://placehold.it/500x500" alt="profile pic">
-                                        </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 500px; max-height: 500px;"></div>
+                            <div class="col-sm-10">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 500px; height: 500px;">
+                                        <img src="http://placehold.it/500x500" alt="profile pic">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 500px; max-height: 500px;"></div>
                                     <div>
                                         <span class="btn btn-default btn-file">
                                             <span class="fileinput-new">Select image</span>
@@ -125,14 +110,14 @@
                                             <input id="pic" name="pic_file" type="file" class="form-control"/>
                                         </span>
                                         <a href="#" class="btn btn-danger fileinput-exists"
-                                                           data-dismiss="fileinput">Remove</a>
+                                        data-dismiss="fileinput">Remove</a>
                                     </div>
-                                    </div>
-                                    <span class="help-block"><?php echo e($errors->first('pic_file', ':message')); ?></span>
                                 </div>
+                                <span class="help-block"><?php echo e($errors->first('pic_file', ':message')); ?></span>
+                            </div>
                         </div>
 
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
@@ -147,7 +132,7 @@
                             </div>
                         </div>
 
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
@@ -162,7 +147,7 @@
                             </div>
                         </div>
 
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
@@ -177,11 +162,11 @@
                             </div>
                         </div>
 
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">
-                                So ban:
+                                Số bàn:
                             </label>
                             <div class="col-sm-5">
                                 <input type="text" id="soban" name="soban" class="form-control" required>
@@ -192,7 +177,7 @@
                             </div>
                         </div>
 
-                         <!--Name-->
+                        <!--Name-->
                         <div class="form-group <?php echo e($errors->
                             first('name', 'has-error')); ?>">
                             <label for="title" class="col-sm-2 control-label">

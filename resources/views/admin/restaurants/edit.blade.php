@@ -86,7 +86,10 @@
                                         @if($nhahang->idloainhahang==$i->id)
                                         {{"selected"}}
                                         @endif
-                                         value="{{$i->id}}">{{$i->tenlnh}}</option>
+                                         value="{{$i->id}}">
+                                         {{$i->tenlnh}}
+                                         </option>
+
                                         }
                                         }
                                     @endforeach

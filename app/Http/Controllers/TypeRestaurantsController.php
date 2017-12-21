@@ -16,7 +16,6 @@ class TypeRestaurantsController extends JoshController
     public function index()
     {
 
-     //$data = DB::table('loainhahang')->get();
         $data = Loainhahang::all();
      if( count($data) > 0 ){
         return view('admin.typerestaurants.index')->with(['data' => $data]);
@@ -32,7 +31,6 @@ public function create()
 
 public function store(){   
 
-    //$data = DB::table('loainhahang')->get();
     $data = array(
         'tenlnh' => $_POST["tenlnh"],  
         'ghichu' => $_POST["ghichu"]
@@ -71,7 +69,6 @@ public function edit($id){
 
 
     $loainhahang = Loainhahang::find($id);
-    // echo $loainhahang;
     return view('admin.typerestaurants.edit',['loainhahang'=>$loainhahang]);
 
 }

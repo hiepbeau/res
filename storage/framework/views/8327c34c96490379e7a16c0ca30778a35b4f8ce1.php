@@ -15,7 +15,8 @@
 <?php $__env->startSection('content'); ?>
 <section class="content-header">
     <h1>
-        <?php echo app('translator')->get('groups/title.create'); ?>
+        <!-- <?php echo app('translator')->get('groups/title.create'); ?> -->
+        Type Restaurants
     </h1>
     <ol class="breadcrumb">
         <li>

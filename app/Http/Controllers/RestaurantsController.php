@@ -81,9 +81,6 @@ public function update(Request $request,$id)
 
     DB::table('nhahang')->where('id', $id)->update($data);
 
-    $test=DB::table('nhahang')->where('id',$id)->get();
-    echo $test;
-
     return Redirect::route('admin.restaurants')->with('success');
 
 
@@ -112,11 +109,11 @@ public function delete_modal($id = null)
 public function delete($id = null)
 {
     DB::table('nhahang')->where('id', $id)->delete();
+    $nhahang = Nhahang::all();
 
-    $data = DB::table('nhahang')->join('loainhahang','nhahang.idloainhahang','=','loainhahang.id')->get();
-    $loainhahang = DB::table('loainhahang')->get();
-    if( count($data) > 0 ){
-        return view('admin.restaurants.index')->with(['data' => $data]);
+    $loainhahang = Loainhahang::all();
+    if( count($nhahang) > 0 ){
+        return view('admin.restaurants.index')->with(['data' => $nhahang]);
     } else {
        return view('admin.restaurants.create')->with(['lnh' => $loainhahang]);
    }

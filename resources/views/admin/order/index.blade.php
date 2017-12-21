@@ -1,18 +1,13 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-Users List
-@parent
-@stop
+
 
 {{-- page level styles --}}
 @section('header_styles')
 <style type="text/css">
 	tr#data td{
 		text-align: center;
-		font-size: 20px;
-		line-height: 90px;
+		
 	}
 	tr#tableHead td{
 		text-align: center;
@@ -26,24 +21,30 @@ Users List
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Admin</h1>
+    <h1>Order</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">
                 <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                Dashboard
+                <!-- Dashboard -->
+                @lang('general.dashboard')
             </a>
         </li>
-        <li><a href="#">Order</a></li>
+        <li>Order</li>
         <li class="active">Order List</li>
     </ol>
 </section>
 
 <!-- Main content -->
+<section class="content">
 	<div id="duongbao">
-			<div class="alert alert-info"><h1>Restaurants Manager</h1></div>
+		<div class="col-lg-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Order list</div>
+				<div class="panel-heading">
+					<h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        Order List
+                    </h4>
+				</div>
 				<div class="panel-body">
 					<table id="danhsach" class="table table-bordered table-strip table-hover">
 						<thead>
@@ -54,7 +55,7 @@ Users List
 								<td >Họ khách hàng</td>
 								<td >Tên khách hàng</td>
 								<td >Ngày</td>
-								<td >số bàn</td>
+								<td >Số bàn</td>
 								<td>Ghi chú</td>
 								@if(Sentinel::inRole('admin'))
 								<td>Option</td>
@@ -78,7 +79,6 @@ Users List
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
-										&nbsp;&nbsp;&nbsp;
 										
 										<a href="{{route('admin.order.delete_modal',$value->id)}}" data-toggle="modal" data-target="#delete_modal" 
 										class="btn btn-danger">
@@ -92,6 +92,7 @@ Users List
 					</table>
 				</div>
 			</div>
+		</div>
 	</div>
 	
   	<div class="modal fade" id="delete_modal" role="dialog">
@@ -110,5 +111,5 @@ Users List
   		});
 	</script>
 
-
+</section>
 @stop

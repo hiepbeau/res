@@ -85,7 +85,11 @@
                                         <?php echo e("selected"); ?>
 
                                         <?php endif; ?>
-                                         value="<?php echo e($i->id); ?>"><?php echo e($i->tenlnh); ?></option>
+                                         value="<?php echo e($i->id); ?>">
+                                         <?php echo e($i->tenlnh); ?>
+
+                                         </option>
+
                                         }
                                         }
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

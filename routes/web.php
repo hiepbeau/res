@@ -351,8 +351,12 @@ Route::post('contact',array('as' => 'contact','uses' => 'FrontEndController@post
 ###############################################
 
 
-Route::get('/', array('as' => 'home', function () {
-    return View::make('index');
+// Route::get('/', array('as' => 'home', function () {
+//     return View::make('index');
+// }));
+
+Route::get('/', array('as'=> 'home',function(){
+    echo "HelloWord";
 }));
 
 Route::get('{name?}', 'JoshController@showFrontEndView');

@@ -1,32 +1,34 @@
 @extends('admin/layouts/default')
 
-{{-- Page title --}}
-@section('title')
-Users List
-@parent
-@stop
 
 {{-- page level styles --}}
 @section('header_styles')
 <style type="text/css">
 	tr#data td{
 		text-align: center;
-		font-size: 20px;
-		line-height: 90px;
+		
 	}
 	tr#tableHead td{
 		text-align: center;
 	}
+	
 	a{
 		cursor: pointer;
+	
 	}
+	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @stop
+@section('header_styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap.css') }}" />
+<link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Admin</h1>
+    <h1>Restaurants</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">
@@ -41,7 +43,7 @@ Users List
 
 <!-- Main content -->
 	<div id="duongbao">
-			<div class="alert alert-info"><h1>Restaurants Manager</h1></div>
+		<div class="col-lg-12">	
 			<div class="panel panel-primary">
 				<div class="panel-heading">Restaurants list</div>
 				<div class="panel-body">
@@ -84,16 +86,16 @@ Users List
 									<td>{{ $value-> soban }}</td>
 									<td>{{ $value-> ghichu }}</td>
 									 @if(Sentinel::inRole('admin'))
-									<td>
-										 <a href="{{url('admin/restaurants/edit/'.$value->id)}}" class="btn btn-info">
+									<td >
+										 <a href="{{url('admin/restaurants/edit/'.$value->id)}}" data-toggle="modal" class="btn btn-info" style="width: 80px">
 
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 											Edit
 										</a>
-										&nbsp;&nbsp;&nbsp;
-										<a href="{{route('admin.restaurants.delete_modal',$value->id)}}" data-toggle="modal" data-target="#delete_modal" 
-										class="btn btn-danger">
-											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+										
+										<a href="{{route('admin.restaurants.delete_modal',$value->id)}}" data-toggle="modal"  data-target="#delete_modal" class="btn btn-danger"  style="width: 80px">
+											<i class="fa fa-trash-o" aria-hidden="true"></i>
+											Delete
 										</a>
 									</td>
 									@endif
@@ -103,12 +105,12 @@ Users List
 					</table>
 				</div>
 			</div>
+		</div>
 	</div>
 	
   	<div class="modal fade" id="delete_modal" role="dialog">
     	<div class="modal-dialog">
     		<div class="modal-content">      
-    			<!-- Modal content-->
       		</div>
    		</div>
   	</div>

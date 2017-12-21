@@ -2,30 +2,30 @@
 
 {{-- Web site Title --}}
 @section('title')
-    @lang('admin/groups/title.create')
-    @parent
+@lang('admin/groups/title.create')
+@parent
 @stop
 <style>
-  #image{
+#image{
     width: 586px;
     height: 437px;
-  }
-  #image img{
+}
+#image img{
     width: 586px;
     height: 437px;
     border-radius: 4px;
-  }
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @section('header_styles')
-    <!--page level css -->
-    <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
-    <!--end of page level css-->
+<!--page level css -->
+<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
+<link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
+<!--end of page level css-->
 @stop
 
 {{-- Content --}}
@@ -61,126 +61,137 @@
                 <div class="panel-body">
                     {!! $errors->first('slug', '<span class="help-block">Another role with same slug exists, please choose another name</span> ') !!}
                     @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     @endif
                     <form class="form-horizontal" role="form" method="post" 
-                       action="{{url('admin/order/create2/'.$donhang->id)}}" enctype="multipart/form-data" >
-                        <!-- CSRF Token -->
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-                       
-                        
-                        <!--Name-->
-                        <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Tên nhà hàng:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ten" name="ten" class="form-control" 
-                                value="{{$donhang->nhahang->ten}}">
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
-
-                          <!--Name-->
-                        <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Họ khách  hàng:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="hokh" name="hokh" class="form-control" 
-                                value="{{$donhang->user->first_name}}">
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
-            
-                         <!--Name-->
-                        <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Tên khách  hàng:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="tenkh" name="tenkh" class="form-control" 
-                                value="{{$donhang->user->last_name}}">
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
-                        
-                           <!--Name-->
-                        <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ngày,giờ:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ngay" name="ngay" class="form-control" 
-                                value="{{$donhang->ngay}}">
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
-
-                       
-
-                         <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ghi chú:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ghichu" name="ghichu" class="form-control" 
-                                value="{{ $donhang->ghichu}}">
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
-                        </div>
+                    action="{{url('admin/order/create2/'.$donhang->id)}}" enctype="multipart/form-data" >
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
 
-                        
-                        <!--button-->
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="{{ route('admin.order') }}">
-                                    @lang('button.cancel')
-                                </a>
-                                <button type="submit" class="btn btn-success">
-                                    Update
-                                </button>
-                            </div>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Tên nhà hàng:
+                        </label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="idnhahang">
+                                @foreach($nhahang as $i)
+                                <option value="{{$i->id}}"
+                                    @if($donhang->idnhahang==$i->id)
+                                        {{"selected"}}
+                                        @endif
+                                         value="{{$i->id}}">{{$i->ten}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Khách hàng:
+                        </label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="iduser">
+                                @foreach($user as $i)
+                                <option value="{{$i->id}}"
+                                    @if($donhang->iduser                          ==$i->id)
+                                        {{"selected"}}
+                                        @endif
+                                         value="{{$i->id}}">{{$i->id}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+                    
+
+                    <!--Name-->
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Ngày,giờ:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="ngay" name="ngay" class="form-control" 
+                            value="{{$donhang->ngay}}">
+                        </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Số bàn:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="soban" name="soban" class="form-control" 
+                            value="{{ $donhang->soban}}">
+                        </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Ghi chú:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="ghichu" name="ghichu" class="form-control" 
+                            value="{{ $donhang->ghichu}}">
+                        </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+
+
+                    <!--button-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <a class="btn btn-danger" href="{{ route('admin.order') }}">
+                                @lang('button.cancel')
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- row-->
+</div>
+<!-- row-->
 </section>
 @stop
 
 @section('footer_scripts')
-    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-    <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/edituser.js') }}"></script>
+<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+<script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+<script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/pages/edituser.js') }}"></script>
 @stop

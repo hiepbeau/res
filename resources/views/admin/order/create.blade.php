@@ -1,10 +1,7 @@
 @extends('admin/layouts/default')
 
 {{-- Web site Title --}}
-@section('title')
-@lang('admin/groups/title.create')
-@parent
-@stop
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
@@ -18,7 +15,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-        @lang('groups/title.create')
+        Order
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -67,7 +64,7 @@
                             Tên nhà hàng:
                         </label>
                         <div class="col-sm-5">
-                            <select class="form-control" name="nhahang">
+                            <select class="form-control" name="idnhahang">
                                 @foreach($nhahang as $i)
                                 <option value="{{$i->id}}">{{$i->ten}}</option>
                                 @endforeach
@@ -84,9 +81,9 @@
                             Khách hàng:
                         </label>
                         <div class="col-sm-5">
-                            <select class="form-control" name="user">
+                            <select class="form-control" name="iduser">
                                 @foreach($user as $i)
-                                <option value="{{$i->id}}">{{$i->first_name, $i->last_name}}</option>
+                                <option value="{{$i->id}}">{{$i->id}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -95,64 +92,65 @@
                         </div>
                     </div>
 
-                    <!--Name-->
                     <div class="form-group {{ $errors->
                         first('name', 'has-error') }}">
                         <label for="title" class="col-sm-2 control-label">
                             Ngày, giờ:
                         </label>
                         <div class="col-sm-5">
-                            <input type="text" id="ngay" name="ngay" class="form-control" required>
+                            <input type="text" id="ngay" name="ngay" class="form-control" required  data-date-format="YYYY-MM-DD HH-MM-SS"
+                            placeholder="yyyy-mm-dd hh-mm-ss">
                         </div>
                         <div class="col-sm-4">
                             {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="tab2" disabled="disabled">
-                        <h2 class="hidden">&nbsp;</h2> <div class="form-group  {{ $errors->first('dob', 'has-error') }}">
-                            <label for="dob" class="col-sm-2 control-label">Date of Birth *</label>
-                            <div class="col-sm-10">
-                                <input id="dob" name="dob" type="text" class="form-control"
-                                data-date-format="YYYY-MM-DD"
-                                placeholder="yyyy-mm-dd"/>
-                            </div>
-                            <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Số bàn:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="soban" name="soban" class="form-control" required>
                         </div>
-                        
-                        
-                        
-                        <div class="form-group {{ $errors->
-                            first('name', 'has-error') }}">
-                            <label for="title" class="col-sm-2 control-label">
-                                Ghi chú:
-                            </label>
-                            <div class="col-sm-5">
-                                <input type="text" id="ghichu" name="ghichu" class="form-control" required>
-                            </div>
-                            <div class="col-sm-4">
-                                {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
-                            </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
                         </div>
-                        
-                        
-                        <!--button-->
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-4">
-                                <a class="btn btn-danger" href="{{ route('admin.groups') }}">
-                                    @lang('button.cancel')
-                                </a>
-                                <button type="submit" class="btn btn-success" id="submit">
-                                    @lang('button.save')
-                                </button>
-                            </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->
+                        first('name', 'has-error') }}">
+                        <label for="title" class="col-sm-2 control-label">
+                            Ghi chú:
+                        </label>
+                        <div class="col-sm-5">
+                            <input type="text" id="ghichu" name="ghichu" class="form-control" required>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-sm-4">
+                            {!! $errors->first('name', '<span class="help-block">:message</span> ') !!}
+                        </div>
+                    </div>
+
+
+                    <!--button-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <a class="btn btn-danger" href="{{ route('admin.groups') }}">
+                                @lang('button.cancel')
+                            </a>
+                            <button type="submit" class="btn btn-success" id="submit">
+                                @lang('button.save')
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- row-->
+</div>
+<!-- row-->
 </section>
 @stop
 

@@ -11,9 +11,15 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    // public function testBasicExample()
+    // {
+    //     $this->visit('/')
+    //          ->see('EXCELLENT ADMIN TEMPLATE FOR LARAVEL');
+    // }
+
+     public function testBasicExample()
     {
         $this->visit('/')
-             ->see('EXCELLENT ADMIN TEMPLATE FOR LARAVEL');
+             ->see('HelloWord');
     }
 }

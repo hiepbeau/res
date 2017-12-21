@@ -18,7 +18,8 @@
 @section('content')
 <section class="content-header">
     <h1>
-        @lang('groups/title.create')
+        <!-- @lang('groups/title.create') -->
+        Type Restaurants
     </h1>
     <ol class="breadcrumb">
         <li>
