@@ -109,8 +109,8 @@ public function delete_modal($id = null)
 public function delete($id = null)
 {
     DB::table('nhahang')->where('id', $id)->delete();
+    
     $nhahang = Nhahang::all();
-
     $loainhahang = Loainhahang::all();
     if( count($nhahang) > 0 ){
         return view('admin.restaurants.index')->with(['data' => $nhahang]);

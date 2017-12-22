@@ -1,10 +1,7 @@
 @extends('admin/layouts/default')
 
 {{-- Web site Title --}}
-@section('title')
-    @lang('admin/groups/title.create')
-    @parent
-@stop
+
 <style>
   #image{
     width: 586px;
@@ -31,9 +28,7 @@
 {{-- Content --}}
 @section('content')
 <section class="content-header">
-    <h1>
-        @lang('groups/title.create')
-    </h1>
+    <h1>Type Restaurant</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">
@@ -55,7 +50,7 @@
             <div class="panel panel-primary ">
                 <div class="panel-heading">
                     <h4 class="panel-title"> <i class="livicon" data-name="users-add" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Create new type restaurant
+                        Edit type restaurant
                     </h4>
                 </div>
                 <div class="panel-body">

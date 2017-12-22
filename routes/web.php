@@ -1,21 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
 /**
  * Model binding into route
  */
-Route::model('file', 'App\File');
-Route::model('task', 'App\Task');
+//Route::model('file', 'App\File');
+//Route::model('task', 'App\Task');
 Route::model('users', 'App\User');
 
 Route::pattern('slug', '[a-z0-9- _]+');
@@ -70,11 +59,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
     Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
     Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
-	
+
 
     # Restaurant Management
     Route::group(array('prefix' => 'restaurants'), function () {
-        
+
         Route::get('/', array('as' => 'restaurants', 'uses' => 'RestaurantsController@index'));
         Route::get('create', 'RestaurantsController@create');
         Route::post('create1',['as' => 'restaurants.create1', 'uses' =>'RestaurantsController@store']);
@@ -89,7 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     });
 
     Route::group(array('prefix' => 'typerestaurants'), function () {
-        
+
         Route::get('/', array('as' => 'typerestaurants', 'uses' => 'TypeRestaurantsController@index'));
         Route::get('create', 'TypeRestaurantsController@create');
         Route::post('create1',['as' => 'typerestaurants.create1', 'uses' =>'TypeRestaurantsController@store']);
@@ -104,17 +93,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     });
 
     Route::group(array('prefix' => 'order'), function () {
-        
+
         Route::get('/', array('as' => 'order', 'uses' => 'OrderController@index'));
         Route::get('create', 'OrderController@create');
         Route::post('create1',['as' => 'order.create1', 'uses' =>'OrderController@store']);
 
         Route::get('edit/{id}', array('as' => 'order.edit', 'uses' => 'OrderController@edit'));
         Route::post('create2/{id}', ['as' => 'order.create2', 'uses' =>'OrderController@update']);
-
         Route::get('{order}/delete_modal',['as' => 'order.delete_modal', 'uses' =>'OrderController@delete_modal']);
 
         Route::get('{order}/delete', array('as' => 'order.delete', 'uses' => 'OrderController@delete'));
+       
 
     });
 
@@ -124,7 +113,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
     
     # User Managemen    
     Route::group(array('prefix' => 'users'), function () {
-                    Route::get('/', array('as' => 'users', 'uses' => 'UsersController@index'));
+        Route::get('/', array('as' => 'users', 'uses' => 'UsersController@index'));
         Route::get('data',['as' => 'users.data', 'uses' =>'UsersController@data']);
         Route::get('create', 'UsersController@create');
         Route::post('create', 'UsersController@store');
@@ -149,14 +138,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'SentinelAdmin', 'as' => 'adm
         Route::get('{group}/confirm-delete', array('as' => 'groups.confirm-delete', 'uses' => 'GroupsController@getModalDelete'));
         Route::get('{group}/restore', array('as' => 'groups.restore', 'uses' => 'GroupsController@getRestore'));
     });
-   
 
-    /*routes for file*/
-    Route::group(array('prefix' => 'file'), function () {
-        Route::post('create', 'FileController@store');
-        Route::post('createmulti', 'FileController@postFilesCreate');
-        Route::delete('delete', 'FileController@delete');
-    });
 
     Route::get('crop_demo', function () {
         return redirect('admin/imagecropping');
@@ -235,8 +217,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'SentinelUser', 'as' => 'user.
     Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
     
 
-     Route::group(array('prefix' => 'restaurants'), function () {
-        
+    Route::group(array('prefix' => 'restaurants'), function () {
+
         Route::get('/', array('as' => 'restaurants', 'uses' => 'RestaurantsController@index'));
         Route::get('create', 'RestaurantsController@create');
         Route::post('create1',['as' => 'restaurants.create1', 'uses' =>'RestaurantsController@store']);
@@ -265,7 +247,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'SentinelUser', 'as' => 'user.
     });
     Route::resource('users', 'UsersController');
 
-   
+
     # Group Management
     Route::group(array('prefix' => 'groups'), function () {
         Route::get('/', array('as' => 'groups', 'uses' => 'GroupsController@index'));
@@ -344,22 +326,7 @@ Route::get('logout', array('as' => 'logout','uses' => 'FrontEndController@getLog
 # contact form
 Route::post('contact',array('as' => 'contact','uses' => 'FrontEndController@postContact'));
 
-#frontend views
-###############################################
-
-
-###############################################
-
-
-// Route::get('/', array('as' => 'home', function () {
-//     return View::make('index');
-// }));
-
-Route::get('/', array('as'=> 'home',function(){
-    echo "HelloWord";
-}));
 
 Route::get('{name?}', 'JoshController@showFrontEndView');
 
-  
 # End of frontend views

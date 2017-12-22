@@ -75,9 +75,9 @@
 											Edit
 										</a>
 										
-										<a href="<?php echo e(route('admin.order.delete_modal',$value->id)); ?>" data-toggle="modal" data-target="#delete_modal" 
-										class="btn btn-danger">
-											<i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+										<a href="<?php echo e(route('admin.order.delete_modal',$value->id)); ?>" data-toggle="modal" data-target="#delete_modal" class="btn btn-danger">
+											<i class="fa fa-trash-o" aria-hidden="true"></i>
+											Delete
 										</a>
 									</td>
 									<?php endif; ?>
