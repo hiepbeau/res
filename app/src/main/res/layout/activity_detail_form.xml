@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="hiepnguyen.nhcver2.DetailFormActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="1"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:text="Name:"
+                android:textColor="@color/colorAccent" />
+
+            <EditText android:id="@+id/name" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Address:"
+                android:textColor="@color/colorAccent" />
+
+            <EditText android:id="@+id/addr" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Type:"
+                android:textColor="@color/colorAccent" />
+
+            <RadioGroup android:id="@+id/types">
+
+                <RadioButton
+                    android:id="@+id/take_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Take-Out" />
+
+                <RadioButton
+                    android:id="@+id/sit_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sit-Down" />
+
+                <RadioButton
+                    android:id="@+id/delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery" />
+            </RadioGroup>
+        </TableRow>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#e7a1a1"
+            android:drawableTop="@drawable/ic_save_black_48dp"
+            android:text="Save"
+            android:textColor="#3b383a"
+            android:textSize="24sp" />
+    </TableLayout>
+
+</ScrollView>
