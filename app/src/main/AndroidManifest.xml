@@ -29,6 +29,7 @@
         <activity android:name=".AddRestaurantActivity" />
         <activity android:name=".NoteCreate" />
         <activity android:name=".DetailFormActivity"></activity>
+        <activity android:name=".EditPreferences"></activity>
     </application>
 
 </manifest>

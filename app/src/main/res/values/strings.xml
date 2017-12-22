@@ -2,5 +2,5 @@
     <string name="app_name">NHCVer2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Note</string>
-    <string name="title_notifications">Profile</string>
+    <string name="title_notifications">About</string>
 </resources>

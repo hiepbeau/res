@@ -5,7 +5,9 @@ import android.app.ListActivity;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +40,7 @@ public class AddRestaurantActivity extends ListActivity {
     RestaurantAdapter adapter = null;
     Cursor model = null;
     RestaurantHelper helper = null;
+    SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +48,10 @@ public class AddRestaurantActivity extends ListActivity {
         setContentView(R.layout.activity_add_restaurant);
 
         helper = new RestaurantHelper(this);
-        model = helper.getAllDB();
-        startManagingCursor(model);
-        adapter = new RestaurantAdapter(model);
-        setListAdapter(adapter);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        initList();
+        prefs.registerOnSharedPreferenceChangeListener(prefListener);
+
 
     }
 
@@ -70,9 +73,9 @@ public class AddRestaurantActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.option, menu);
-        return true;
+        new MenuInflater(this).inflate(R.menu.option, menu);
+
+        return (super.onCreateOptionsMenu(menu));
     }
 
 
@@ -81,9 +84,33 @@ public class AddRestaurantActivity extends ListActivity {
         if (item.getItemId() == R.id.add) {
             startActivity(new Intent(AddRestaurantActivity.this, DetailFormActivity.class));
             return (true);
+        } else if (item.getItemId() == R.id.prefs) {
+            startActivity(new Intent(this, EditPreferences.class));
+            return (true);
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void initList() {
+        if (model != null) {
+            stopManagingCursor(model);
+            model.close();
+        }
+        model = helper.getAllDB(prefs.getString("sort_order", "name"));
+        startManagingCursor(model);
+        adapter = new RestaurantAdapter(model);
+        setListAdapter(adapter);
+    }
+
+
+    SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            if (s.equals("sort_order")) {
+                initList();
+            }
+        }
+    };
 
 
     class RestaurantAdapter extends CursorAdapter {

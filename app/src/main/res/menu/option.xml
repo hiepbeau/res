@@ -7,4 +7,9 @@
         android:orderInCategory="100"
         android:title="Add new restaurant"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/prefs"
+        android:icon="@drawable/ic_menu_preferences"
+        android:title="Settings" />
 </menu>
