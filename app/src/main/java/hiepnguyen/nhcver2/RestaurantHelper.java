@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class RestaurantHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "restaurant.db";
-    private static final int SCHEMA_VERSION = 1;
+    private static final int SCHEMA_VERSION = 3;
 
 
     public RestaurantHelper(Context context) {
@@ -25,17 +25,24 @@ public class RestaurantHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE restaurants (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, address TEXT, type TEXT);");
+        sqLiteDatabase.execSQL("CREATE TABLE restaurants (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, address TEXT, type TEXT, feed TEXT, lat REAL, lon REAL);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        if (i < 2) {
+            sqLiteDatabase.execSQL("ALTER TABLE restaurants ADD COLUMN feed TEXT");
+        }
 
+        if (i < 3) {
+            sqLiteDatabase.execSQL("ALTER TABLE restaurants ADD COLUMN lat REAL");
+            sqLiteDatabase.execSQL("ALTER TABLE restaurants ADD COLUMN lon REAL");
+        }
     }
 
     public Cursor getAllDB(String orderBy) {
         return (getReadableDatabase()
-                .rawQuery("SELECT _id, name, address, type FROM restaurants ORDER BY " + orderBy,
+                .rawQuery("SELECT _id, name, address, type, lat, lon FROM restaurants ORDER BY " + orderBy,
                         null));
     }
 
@@ -43,16 +50,17 @@ public class RestaurantHelper extends SQLiteOpenHelper {
         String[] args = {id};
 
         return (getReadableDatabase()
-                .rawQuery("SELECT _id, name, address, type FROM restaurants WHERE _ID=?",
+                .rawQuery("SELECT _id, name, address, type, feed, lat, lon FROM restaurants WHERE _ID=?",
                         args));
     }
 
 
-    public void insert(String name, String address, String type) {
+    public void insert(String name, String address, String type, String feed) {
         ContentValues cv = new ContentValues();
         cv.put("name", name);
         cv.put("address", address);
         cv.put("type", type);
+        cv.put("feed", feed);
 
         getWritableDatabase().insert("restaurants", "name", cv);
 
@@ -60,13 +68,26 @@ public class RestaurantHelper extends SQLiteOpenHelper {
 
 
     public void update(String id, String name, String address,
-                       String type) {
+                       String type, String feed) {
         ContentValues cv = new ContentValues();
         String[] args = {id};
 
         cv.put("name", name);
         cv.put("address", address);
         cv.put("type", type);
+        cv.put("feed", feed);
+
+        getWritableDatabase().update("restaurants", cv, "_ID=?",
+                args);
+    }
+
+    public void updateLocation(String id, double lat, double lon) {
+        ContentValues cv = new ContentValues();
+        String[] args = {id};
+
+        cv.put("lat", lat);
+        cv.put("lon", lon);
+
         getWritableDatabase().update("restaurants", cv, "_ID=?",
                 args);
     }
@@ -83,4 +104,15 @@ public class RestaurantHelper extends SQLiteOpenHelper {
         return (c.getString(3));
     }
 
+    public String getFeed(Cursor c) {
+        return (c.getString(4));
+    }
+
+    public double getLatitude(Cursor c) {
+        return (c.getDouble(5));
+    }
+
+    public double getLongitude(Cursor c) {
+        return (c.getDouble(6));
+    }
 }
