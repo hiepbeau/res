@@ -72,6 +72,18 @@
         </TableRow>
 
         <EditText
+            android:id="@+id/notes"
+            android:layout_marginTop="4dip"
+            android:layout_span="2"
+            android:gravity="top"
+            android:hint="Notes"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLines="2"
+            android:scrollHorizontally="false"
+            android:textColorHint="@color/colorAccent" />
+
+        <EditText
             android:id="@+id/feed"
             android:hint="Feed URL"
             android:textColorHint="@color/colorAccent" />

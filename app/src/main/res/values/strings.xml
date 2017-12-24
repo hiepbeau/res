@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Note</string>
     <string name="title_notifications">About</string>
+    <string name="searchLabel">Restaurants</string>
+    <string name="searchHint">search</string>
+    <string name="empty">No restaurants!</string>
+
 </resources>

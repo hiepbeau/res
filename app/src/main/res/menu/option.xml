@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    />
+    <item
+        android:id="@+id/search"
+        android:icon="@mipmap/ic_search"
+        android:title="Search" />
     <item
         android:id="@+id/add"
         android:icon="@drawable/ic_menu_add"
         android:orderInCategory="100"
-        android:title="Add new restaurant"
-        app:showAsAction="always" />
-
+        android:title="Add a restaurant"></item>
     <item
         android:id="@+id/prefs"
         android:icon="@drawable/ic_menu_preferences"
         android:title="Settings" />
+
 </menu>

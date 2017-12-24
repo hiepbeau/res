@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/ctr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
     tools:context="hiepnguyen.nhcver2.ProfileActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
+    <LinearLayout
+        android:id="@+id/abcde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/names"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:text="Developed by\nconghiepk58mtkhtt@gmail.com"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_notifications" />
+    <ImageView
+        android:id="@+id/imageViewAbout"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignTop="@+id/abcde"
+        android:layout_centerHorizontal="true"
 
-    </FrameLayout>
+        android:src="@drawable/ic_action_done_all" />
+
 
     <include
         layout="@layout/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom" />
 
-</LinearLayout>
+</RelativeLayout>
 

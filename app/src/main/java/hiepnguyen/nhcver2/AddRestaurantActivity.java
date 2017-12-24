@@ -2,6 +2,7 @@ package hiepnguyen.nhcver2;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -42,10 +43,24 @@ public class AddRestaurantActivity extends ListActivity {
     RestaurantHelper helper = null;
     SharedPreferences prefs = null;
 
+    public static ArrayList<String> divisions;
+    public static RestaurantHelper restaurantHelper;
+    public static Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
+
+        //note
+        activity = this;
+        restaurantHelper = new RestaurantHelper(this);
+
+        divisions = new ArrayList<>();
+        divisions.add("Takeout");
+        divisions.add("Sitdown");
+        divisions.add("Delivery");
+
 
         helper = new RestaurantHelper(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -87,6 +102,9 @@ public class AddRestaurantActivity extends ListActivity {
         } else if (item.getItemId() == R.id.prefs) {
             startActivity(new Intent(this, EditPreferences.class));
             return (true);
+        } else if (item.getItemId() == R.id.search) {
+            onSearchRequested();
+            return (true);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -96,7 +114,11 @@ public class AddRestaurantActivity extends ListActivity {
             stopManagingCursor(model);
             model.close();
         }
-        model = helper.getAllDB(prefs.getString("sort_order", "name"));
+        String where = null;
+        if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
+            where = "name LIKE \"%" + getIntent().getStringExtra(SearchManager.QUERY) + "%\"";
+        }
+        model = helper.getAllDB(where, prefs.getString("sort_order", "name"));
         startManagingCursor(model);
         adapter = new RestaurantAdapter(model);
         setListAdapter(adapter);

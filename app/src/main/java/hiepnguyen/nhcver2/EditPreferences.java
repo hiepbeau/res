@@ -1,7 +1,11 @@
 package hiepnguyen.nhcver2;
 
+import android.content.ComponentName;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
 /**
@@ -9,10 +13,52 @@ import android.support.annotation.Nullable;
  */
 
 public class EditPreferences extends PreferenceActivity {
+    SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(onChange);
+    }
+
+    @Override
+    protected void onPause() {
+        prefs.unregisterOnSharedPreferenceChangeListener(onChange);
+        super.onPause();
+    }
+
+    SharedPreferences.OnSharedPreferenceChangeListener onChange = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            if ("alarm".equals(s)) {
+                boolean enabled = prefs.getBoolean(s, false);
+                int flag = (enabled ?
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED :
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
+                ComponentName component = new ComponentName(EditPreferences.this,
+                        OnBootReceiver.class);
+
+                getPackageManager()
+                        .setComponentEnabledSetting(component,
+                                flag,
+                                PackageManager.DONT_KILL_APP);
+
+                if (enabled) {
+                    OnBootReceiver.setAlarm(EditPreferences.this);
+                } else {
+                    OnBootReceiver.cancelAlarm(EditPreferences.this);
+                }
+            } else if ("alarm_time".equals(s)) {
+                OnBootReceiver.cancelAlarm(EditPreferences.this);
+                OnBootReceiver.setAlarm(EditPreferences.this);
+            }
+        }
+    };
 }
