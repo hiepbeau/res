@@ -4,6 +4,7 @@
     - Tìm kiếm , sắp xếp danh sách nhà hàng theo tên, địa chỉ ...
     - Hỗ trợ feed url giúp người dùng truy cập thông tin nhanh website của nhà hàng
     - Đặt thời gian và hỗ trợ đẩy thông báo nhắc nhở cho người dùng đến giờ ăn.
+    - Hỗ trợ widget ra ngoài màn hình giúp cho việc hiển thị và truy cập nhanh bất kỳ nhà hàng đã có.
 ## Used technology
 	- Ứng dụng chạy trên máy hệ điều hành android (Min 4.)
     - Ngôn ngữ sử dụng: Java
