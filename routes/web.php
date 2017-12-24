@@ -3,8 +3,8 @@
 /**
  * Model binding into route
  */
-//Route::model('file', 'App\File');
-//Route::model('task', 'App\Task');
+Route::model('file', 'App\File');
+Route::model('task', 'App\Task');
 Route::model('users', 'App\User');
 
 Route::pattern('slug', '[a-z0-9- _]+');
